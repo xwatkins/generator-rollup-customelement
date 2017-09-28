@@ -11,22 +11,65 @@ module.exports = class extends Generator {
     ));
 
     const prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
+      type: 'input',
+      name: 'name',
+      message: 'Your custom element name',
+      default: 'my-component'
+    }, {
+      type: 'input',
+      name: 'description',
+      message: 'Description'
+    }, {
+      type: 'input',
+      name: 'author',
+      message: 'Author'
     }];
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
+      props.camelCaseName = props.name
+      .replace(/^([a-z])/g, g => g[0].toUpperCase())
+      .replace(/-([a-z])/g, g => g[1].toUpperCase());
       this.props = props;
     });
   }
 
   writing() {
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'), {
+        name: this.props.name,
+        description: this.props.description,
+        author: this.props.author
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('_rollup.config.js'),
+      this.destinationPath('rollup.config.js'), {
+        name: this.props.name,
+        camelCaseName: this.props.camelCaseName        
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('_src/_main.js'),
+      this.destinationPath('src/main.js'), {
+        name: this.props.name,
+        camelCaseName: this.props.camelCaseName
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('_index.html'),
+      this.destinationPath('index.html'), {
+        name: this.props.name
+      }
+    );
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.templatePath('_.babelrc'),
+      this.destinationPath('.babelrc')
+    );
+    this.fs.copy(
+      this.templatePath('_styles/_main.css'),
+      this.destinationPath('styles/main.css')
     );
   }
 
