@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Xavier Watkins",
+      "authorEmail": "xavier.watkins@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
