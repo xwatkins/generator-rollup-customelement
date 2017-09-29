@@ -1,4 +1,4 @@
-var loadComponent = function() {
+const loadComponent = function() {
     class <%= camelCaseName %> extends HTMLElement {
 
         constructor() {
