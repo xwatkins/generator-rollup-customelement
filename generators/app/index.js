@@ -68,6 +68,10 @@ module.exports = class extends Generator {
       this.destinationPath('.babelrc')
     );
     this.fs.copy(
+      this.templatePath('_.gitignore'),
+      this.destinationPath('.gitignore')
+    );
+    this.fs.copy(
       this.templatePath('_.eslintrc.json'),
       this.destinationPath('.eslintrc.json')
     );
