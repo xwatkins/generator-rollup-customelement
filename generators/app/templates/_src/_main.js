@@ -3,11 +3,19 @@ const loadComponent = function() {
 
         constructor() {
             super();
-            console.log('The owls are not what they seem.');
+            // get properties here
+            const shadowRoot = this.attachShadow({ mode: 'open' });
+            shadowRoot.innerHTML = `
+            <style>
+            :host {
+                // Style your component
+            }
+            </style>
+            `;    
         }
 
         connectedCallback() {
-            console.log('We are connected. Time for a damn fine cup of coffee.')
+            // do stuff here
         }
 
         attributeChangedCallback(attrName, oldVal, newVal) {}

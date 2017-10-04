@@ -81,10 +81,6 @@ module.exports = class extends Generator {
       this.templatePath('_.eslintrc.json'),
       this.destinationPath('.eslintrc.json')
     );
-    this.fs.copy(
-      this.templatePath('_styles/_main.css'),
-      this.destinationPath('styles/main.css')
-    );
   }
 
   install() {
