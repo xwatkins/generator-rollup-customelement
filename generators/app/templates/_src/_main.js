@@ -22,7 +22,7 @@ const loadComponent = function() {
 
     }
     customElements.define('<%= name %>', <%= camelCaseName %>);
-}
+};
 
 // Conditional loading of polyfill
 if (window.customElements) {
