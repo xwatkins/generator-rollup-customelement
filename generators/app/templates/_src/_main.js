@@ -4,14 +4,6 @@ const loadComponent = function() {
         constructor() {
             super();
             // get properties here
-            const shadowRoot = this.attachShadow({ mode: 'open' });
-            shadowRoot.innerHTML = `
-            <style>
-            :host {
-                // Style your component
-            }
-            </style>
-            `;    
         }
 
         connectedCallback() {
