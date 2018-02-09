@@ -1,7 +1,11 @@
 {
     "name": "<%= name %>",
     "description": "<%= description %>",
-    "main": "src/main.js",
+    "files": [
+        "dist",
+        "src"
+      ],
+    "main": "dist/<%= name %>.js",
     "scripts": {
         "build-dev": "rollup -c",
         "build-prod": "NODE_ENV=production rollup -c",

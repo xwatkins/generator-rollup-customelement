@@ -1,12 +1,11 @@
 {
   "name": "generator-rollup-customelement",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Provides all you need to develop a Custom Element v1 and package it with rollup.",
   "homepage": "https://xwatkins.github.io/generator-rollup-customelement",
   "author": {
     "name": "Xavier Watkins",
-    "email": "xavier.watkins@gmail.com",
-    "url": ""
+    "email": "xavier.watkins@gmail.com"
   },
   "files": [
     "generators"
