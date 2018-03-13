@@ -1,9 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
-import minify from 'rollup-plugin-babel-minify';
-import conditional from "rollup-plugin-conditional";
-
-const isProduction = process.env.NODE_ENV === "production";
+import postcss from "rollup-plugin-postcss";
 
 export default {
     input: 'src/main.js',
@@ -13,15 +10,10 @@ export default {
         file: 'dist/<%= name %>.js',
         format: 'iife'
     },
+    external: ['d3'],
     plugins: [
-        nodeResolve({
-            jsnext: true
-        }),
-        babel({
-            exclude: 'node_modules/**'
-        }),
-        conditional(isProduction, [
-            minify()
-        ])
+        postcss({extensions: ['.css']}),
+        nodeResolve({jsnext: true}),
+        babel({exclude: 'node_modules/**'})
     ]
 };

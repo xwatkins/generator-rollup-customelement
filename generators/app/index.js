@@ -64,6 +64,12 @@ module.exports = class extends Generator {
       }
     );
     this.fs.copyTpl(
+      this.templatePath('_examples/_index.html'),
+      this.destinationPath('examples/index.html'), {
+        name: this.props.name
+      }
+    );
+    this.fs.copyTpl(
       this.templatePath('_README.md'),
       this.destinationPath('README.md'), {
         name: this.props.name
